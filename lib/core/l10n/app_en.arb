@@ -1,0 +1,13 @@
+
+{
+  "@@locale": "en",
+  "appName": "APP Name",
+  "nameRequired": "Name is required",
+  "invalidNameFormat": "Please enter a valid name",
+  "emailRequired": "Email is required",
+  "invalidEmailFormat": "Please enter a valid email address",
+  "passwordRequired": "Password is required",
+  "passwordInvalid": "Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character",
+  "confirmPasswordRequired": "Please confirm your password",
+  "passwordConfirmationMismatch": "Passwords do not match"
+}
