@@ -3,7 +3,8 @@ import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/core/utils/icons_extension.dart';
 
 import 'package:news_app/core/utils/widget_extension.dart';
-import 'package:news_app/models/articles_response.dart';
+import 'package:news_app/models/sources_response.dart';
+
 
 import 'package:news_app/ui/home/widgets/article_bottom_sheet.dart';
 import 'package:news_app/ui/home/widgets/article_card.dart';

@@ -3,7 +3,7 @@ import 'package:news_app/api/api_manager.dart';
 import 'package:news_app/core/utils/context_extention.dart';
 import 'package:news_app/core/utils/numbers_extension.dart';
 import 'package:news_app/core/utils/widget_extension.dart';
-import 'package:news_app/models/articles_response.dart' hide Source;
+import 'package:news_app/models/articles_response.dart' as articles_model;
 import 'package:news_app/models/news_category.dart';
 import 'package:news_app/models/sources_response.dart';
 import 'package:news_app/ui/home/widgets/article_card.dart';
@@ -17,10 +17,10 @@ class NewsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourcesResponse>(
-      future: ApiManager().getSources(category.id),
+      future: apiManager.getSources(category.id),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == .waiting) {
-          return Center(child: CircularProgressIndicator());
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text(snapshot.error.toString()));
         } else {
@@ -28,6 +28,9 @@ class NewsTab extends StatelessWidget {
             return Center(child: Text(snapshot.data!.message!));
           } else {
             final sources = snapshot.data?.sources ?? [];
+            if (sources.isEmpty) {
+              return const Center(child: Text("No Sources Found"));
+            }
             return NewsLayout(sources: sources);
           }
         }
@@ -56,11 +59,12 @@ class _NewsLayoutState extends State<NewsLayout> {
           length: widget.sources.length,
           child: TabBar(
             isScrollable: true,
-            tabAlignment: .start,
+            tabAlignment: TabAlignment.start,
             dividerHeight: 0,
             onTap: (index) {
-              selectedIndex = index;
-              setState(() {});
+              setState(() {
+                selectedIndex = index;
+              });
             },
             tabs: widget.sources
                 .map(
@@ -74,13 +78,11 @@ class _NewsLayoutState extends State<NewsLayout> {
         ),
         16.verticalSpace,
         Expanded(
-          child: FutureBuilder<ArticlesResponse>(
-            future: ApiManager().getArticles(
-              widget.sources[selectedIndex].id ?? '',
-            ),
+          child: FutureBuilder<articles_model.ArticlesResponse>(
+            future: apiManagerArticles(widget.sources[selectedIndex].id ?? ''),
             builder: (context, snapshot) {
-              if (snapshot.connectionState == .waiting) {
-                return Center(child: CircularProgressIndicator());
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text(snapshot.error.toString()));
               } else {
@@ -88,9 +90,12 @@ class _NewsLayoutState extends State<NewsLayout> {
                   return Center(child: Text(snapshot.data!.message!));
                 } else {
                   final articles = snapshot.data?.articles ?? [];
+                  if (articles.isEmpty) {
+                    return const Center(child: Text("No Articles Found"));
+                  }
                   return ListView.separated(
-                    separatorBuilder: (_, _) => 16.verticalSpace,
-                    padding: EdgeInsets.all(16),
+                    separatorBuilder: (_, __) => 16.verticalSpace,
+                    padding: const EdgeInsets.all(16),
                     itemCount: articles.length,
                     itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
@@ -98,7 +103,7 @@ class _NewsLayoutState extends State<NewsLayout> {
                           isScrollControlled: true,
                           backgroundColor: context.colorScheme.primary,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadiusGeometry.circular(16),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                           context: context,
                           builder: (context) =>
@@ -115,5 +120,9 @@ class _NewsLayoutState extends State<NewsLayout> {
         ),
       ],
     );
+  }
+
+  Future<articles_model.ArticlesResponse> apiManagerArticles(String sourceId) {
+    return ApiManager().getArticles(sourceId);
   }
 }

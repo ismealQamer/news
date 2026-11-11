@@ -4,17 +4,17 @@ class SourcesResponse {
   String? message;
   List<Source>? sources;
 
-  SourcesResponse({this.status, this.sources});
+  SourcesResponse({this.status, this.code, this.message, this.sources});
 
   SourcesResponse.fromJson(Map<String, dynamic> json) {
     if (json["status"] is String) {
       status = json["status"];
     }
     if (json["code"] is String) {
-      status = json["code"];
+      code = json["code"]; 
     }
     if (json["message"] is String) {
-      status = json["message"];
+      message = json["message"];
     }
     if (json["sources"] is List) {
       sources = json["sources"] == null
@@ -26,6 +26,8 @@ class SourcesResponse {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data["status"] = status;
+    data["code"] = code;
+    data["message"] = message;
     if (sources != null) {
       data["sources"] = sources?.map((e) => e.toJson()).toList();
     }

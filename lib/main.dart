@@ -3,7 +3,7 @@ import 'package:news_app/core/provider/app_config_provider.dart';
 import 'package:news_app/core/theme/app_colors.dart';
 import 'package:news_app/core/theme/app_theme.dart';
 import 'package:news_app/core/l10n/app_localizations.dart';
-import 'package:news_app/models/articles_response.dart';
+import 'package:news_app/models/sources_response.dart';
 import 'package:news_app/ui/home/home_screen.dart';
 import 'package:news_app/ui/home/widgets/search_layout.dart';
 import 'package:news_app/ui/splash/splash_screen.dart';

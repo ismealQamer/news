@@ -4,11 +4,10 @@ import 'package:news_app/core/utils/context_extention.dart';
 import 'package:news_app/core/utils/icons_extension.dart';
 import 'package:news_app/core/utils/numbers_extension.dart';
 import 'package:news_app/core/utils/widget_extension.dart';
-import 'package:news_app/models/articles_response.dart';
 import 'package:news_app/models/news_category.dart';
+import 'package:news_app/models/sources_response.dart';
 import 'package:news_app/ui/home/tabs/home_tab.dart';
 import 'package:news_app/ui/home/tabs/news_tab.dart';
-
 import 'widgets/search_layout.dart';
 
 class HomeScreen extends StatefulWidget {

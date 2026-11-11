@@ -1,3 +1,5 @@
+import 'package:news_app/models/sources_response.dart';
+
 class ArticlesResponse {
   final String? status;
   final String? code;
@@ -78,17 +80,3 @@ class Article {
   }
 }
 
-class Source {
-  final String? id;
-  final String? name;
-
-  Source({this.id, this.name});
-
-  factory Source.fromJson(Map<String, dynamic> json) {
-    return Source(id: json['id'] as String?, name: json['name'] as String?);
-  }
-
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{'id': id, 'name': name};
-  }
-}
