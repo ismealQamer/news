@@ -115,6 +115,16 @@ flutter run
 - The API key should be kept private and should not be committed to public repositories if you are shipping a production build.
 - Localization and theme settings are managed through the app configuration provider and generated localization files.
 
+## demo video
+
+
+
+https://github.com/user-attachments/assets/dabe69c1-2baa-4291-9301-4ec2ab312a2f
+
+
+
+
 ## License
+
 
 This project does not currently include a license file. If you plan to distribute or publish it, add an appropriate license such as MIT before shipping.
