@@ -1,26 +1,28 @@
 
 import 'package:flutter/material.dart';
-import 'package:news/core/utils/numbers_extension.dart';
-
+import 'package:news_app/core/utils/context_extention.dart';
+import 'numbers_extension.dart';
 
 class DialogUtils {
-  Future<void> showLoadingDialog(
+  Future<void> showAlertDialog(
     BuildContext context, {
-    String message = "Loading ...",
-    bool barrierDismissible = false,
+    String message = 'Loading',
+    bool barierDismissable = true,
   }) async {
     await showDialog(
       context: context,
-      barrierDismissible: barrierDismissible,
-      builder: (context) => AlertDialog(
-        content: Row(
-          children: [
-            CircularProgressIndicator(),
-            8.horizontalSpace,
-            Text(message),
-          ],
-        ),
-      ),
+      barrierDismissible: barierDismissable,
+      builder: (context) {
+        return AlertDialog(
+          content: Row(
+            children: [
+              CircularProgressIndicator(),
+              8.horizontalSpace,
+              Text(message),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -30,13 +32,13 @@ class DialogUtils {
     String? title,
     String? postActionTitle,
     Future<void> Function()? postAction,
-    String? negativeActionTitle,
     Future<void> Function()? negativeAction,
-    bool barrierDismissible = false,
+    String? negativeActionTitle,
+    bool barierDismissable = false,
   }) async {
     await showDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: barierDismissable,
       builder: (context) => AlertDialog(
         title: title != null ? Text(title) : null,
         content: message != null ? Text(message) : null,
@@ -44,8 +46,8 @@ class DialogUtils {
           if (postActionTitle != null)
             TextButton(
               onPressed: () async {
-                Navigator.pop(context);
                 if (postAction != null) {
+                  context.pop();
                   await postAction();
                 }
               },
@@ -54,7 +56,7 @@ class DialogUtils {
           if (negativeActionTitle != null)
             TextButton(
               onPressed: () async {
-                Navigator.pop(context);
+                context.pop();
                 if (negativeAction != null) {
                   await negativeAction();
                 }

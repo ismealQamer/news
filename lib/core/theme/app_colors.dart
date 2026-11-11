@@ -1,71 +1,72 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  Color get primaryColor;
-  Color get onPrimaryColor;
-  Color get secondaryColor;
-  Color get onSecondaryColor;
-  Color get surfaceColor;
-  Color get onSurfaceColor;
-  Color get errorColor;
-  Color get onErrorColor;
+  Color get primary;
+  Color get onPrimary;
+  Color get secondary;
+  Color get onSecondary;
+  Color get surface;
+  Color get onSurface;
+  Color get error;
+  Color get onError;
+
   Brightness get brightness;
 }
 
-class LightColors implements AppColors {
+class LightAppColors extends AppColors {
+  @override
+  Color get primary => Color(0xFF171717);
+
+  @override
+  Color get onPrimary => Colors.white;
+
+  @override
+  Color get secondary => Color(0xFFA0A0A0);
+
+  @override
+  Color get onSecondary => Color(0xFF171717);
+
+  @override
+  Color get surface => Colors.white;
+
+  @override
+  Color get onSurface => Color(0xFF171717);
+
+  @override
+  Color get error => Colors.red;
+
+  @override
+  Color get onError => Colors.white;
+
   @override
   Brightness get brightness => Brightness.light;
-
-  @override
-  Color get errorColor => Colors.red;
-
-  @override
-  Color get onErrorColor => Colors.white;
-
-  @override
-  Color get onPrimaryColor => Colors.white;
-
-  @override
-  Color get onSecondaryColor => Color(0xFF171717);
-
-  @override
-  Color get onSurfaceColor => Color(0xFF171717);
-
-  @override
-  Color get primaryColor => Color(0xFF171717);
-
-  @override
-  Color get secondaryColor => Color(0xFFA0A0A0);
-
-  @override
-  Color get surfaceColor => Colors.white;
 }
 
-class DarkColors implements AppColors {
+class DarkAppColors extends AppColors {
   @override
   Brightness get brightness => Brightness.dark;
 
   @override
-  Color get errorColor => Colors.red;
+  Color get error => Colors.red;
 
   @override
-  Color get onErrorColor => Colors.white;
+  Color get onError => Colors.white;
 
   @override
-  Color get onPrimaryColor => Color(0xFF171717);
+  Color get onPrimary => Color(0xFF171717);
 
   @override
-  Color get onSecondaryColor => Colors.white;
+  Color get onSecondary => Colors.white;
 
   @override
-  Color get onSurfaceColor => Colors.white;
+  Color get onSurface => Colors.white;
 
   @override
-  Color get primaryColor => Colors.white;
+  Color get primary => Colors.white;
 
   @override
-  Color get secondaryColor => Color(0xFF171717);
+  Color get secondary => Color(0xFF171717);
 
   @override
-  Color get surfaceColor =>  Color(0xFF171717);
+  Color get surface => Color(0xFF171717);
 }

@@ -1,27 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:news/core/l10n/app_localizations.dart';
-import 'package:news/core/provider/app_config_provider.dart';
-import 'package:news/core/utils/dialog_utils.dart';
+
+import 'package:news_app/core/provider/app_config_provider.dart';
 import 'package:provider/provider.dart';
 
-extension ContextExtension on BuildContext {
+import '../l10n/app_localizations.dart';
+import 'dialog_utils.dart';
+
+extension BuildContextExtensions on BuildContext {
+  AppConfig get appConfig => Provider.of<AppConfig>(this);
+  AppConfig get appConfigListenFalse =>
+      Provider.of<AppConfig>(this, listen: false);
+  T read<T>() => Provider.of<T>(this, listen: false);
+  T watch<T>() => Provider.of<T>(this, listen: true);
+
+  ThemeData get theme => Theme.of(this);
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  TextTheme get text => textTheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
+  ColorScheme get colors => colorScheme;
+
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
+  Size get screenSize => MediaQuery.sizeOf(this);
+  double get screenWidth => MediaQuery.sizeOf(this).width;
+  double get screenHeight => MediaQuery.sizeOf(this).height;
+
   AppLocalizations get locale => AppLocalizations.of(this)!;
 
-  ColorScheme get colors => Theme.of(this).colorScheme;
+  NavigatorState get navigator => Navigator.of(this);
 
-  TextTheme get text => Theme.of(this).textTheme;
+  void pushNamed(String routeName, {Object? arguments}) {
+    Navigator.pushNamed(this, routeName, arguments: arguments);
+  }
 
-  AppConfigProvider get provider => Provider.of<AppConfigProvider>(this);
+  void pushReplacementNamed(String routeName, {Object? arguments}) {
+    Navigator.pushReplacementNamed(this, routeName, arguments: arguments);
+  }
 
-  void showLoadingDialog({
-    String message = "Loading ...",
-    bool barrierDismissible = false,
+  void pop<T>([T? result]) {
+    Navigator.pop(this, result);
+  }
+
+  ScaffoldMessengerState get scaffoldMessenger => ScaffoldMessenger.of(this);
+
+  void showSnackBar(SnackBar snackBar) {
+    ScaffoldMessenger.of(this).showSnackBar(snackBar);
+  }
+
+  void showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void showDialogUtils({
+    String message = 'Loading',
+    bool barierDismissable = false,
   }) {
     final DialogUtils dialogUtils = DialogUtils();
-    dialogUtils.showLoadingDialog(
+    dialogUtils.showAlertDialog(
       this,
       message: message,
-      barrierDismissible: barrierDismissible,
+      barierDismissable: barierDismissable,
     );
   }
 
@@ -29,21 +66,21 @@ extension ContextExtension on BuildContext {
     String? message,
     String? title,
     String? postActionTitle,
+    Future<void> Function()? negativeAction,
     Future<void> Function()? postAction,
     String? negativeActionTitle,
-    Future<void> Function()? negativeAction,
-    bool barrierDismissible = false,
-  })async{
+    bool barierDismissable = false,
+  }) async {
     final DialogUtils dialogUtils = DialogUtils();
-    await dialogUtils.showActionDialog(
+    dialogUtils.showActionDialog(
       this,
       message: message,
       title: title,
       postActionTitle: postActionTitle,
       postAction: postAction,
-      negativeActionTitle: negativeActionTitle,
       negativeAction: negativeAction,
-      barrierDismissible: barrierDismissible,
+      negativeActionTitle: negativeActionTitle,
+      barierDismissable: barierDismissable,
     );
   }
 }

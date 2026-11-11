@@ -94,59 +94,185 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[Locale('en')];
 
-  /// No description provided for @appName.
+  /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'APP Name'**
-  String get appName;
+  /// **'News App'**
+  String get appTitle;
 
-  /// No description provided for @nameRequired.
+  /// No description provided for @news.
   ///
   /// In en, this message translates to:
-  /// **'Name is required'**
-  String get nameRequired;
+  /// **'News'**
+  String get news;
 
-  /// No description provided for @invalidNameFormat.
+  /// No description provided for @categories.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a valid name'**
-  String get invalidNameFormat;
+  /// **'Categories'**
+  String get categories;
 
-  /// No description provided for @emailRequired.
+  /// No description provided for @settings.
   ///
   /// In en, this message translates to:
-  /// **'Email is required'**
-  String get emailRequired;
+  /// **'Settings'**
+  String get settings;
 
-  /// No description provided for @invalidEmailFormat.
+  /// No description provided for @theme.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a valid email address'**
-  String get invalidEmailFormat;
+  /// **'Theme'**
+  String get theme;
 
-  /// No description provided for @passwordRequired.
+  /// No description provided for @language.
   ///
   /// In en, this message translates to:
-  /// **'Password is required'**
-  String get passwordRequired;
+  /// **'Language'**
+  String get language;
 
-  /// No description provided for @passwordInvalid.
+  /// No description provided for @light.
   ///
   /// In en, this message translates to:
-  /// **'Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character'**
-  String get passwordInvalid;
+  /// **'Light'**
+  String get light;
 
-  /// No description provided for @confirmPasswordRequired.
+  /// No description provided for @dark.
   ///
   /// In en, this message translates to:
-  /// **'Please confirm your password'**
-  String get confirmPasswordRequired;
+  /// **'Dark'**
+  String get dark;
 
-  /// No description provided for @passwordConfirmationMismatch.
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get general;
+
+  /// No description provided for @business.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get business;
+
+  /// No description provided for @sports.
+  ///
+  /// In en, this message translates to:
+  /// **'Sports'**
+  String get sports;
+
+  /// No description provided for @technology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get technology;
+
+  /// No description provided for @entertainment.
+  ///
+  /// In en, this message translates to:
+  /// **'Entertainment'**
+  String get entertainment;
+
+  /// No description provided for @health.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get health;
+
+  /// No description provided for @science.
+  ///
+  /// In en, this message translates to:
+  /// **'Science'**
+  String get science;
+
+  /// No description provided for @invalidName.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid name'**
+  String get invalidName;
+
+  /// No description provided for @nameCantBeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Name cannot be empty'**
+  String get nameCantBeEmpty;
+
+  /// No description provided for @nameIsInInvalidFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is in invalid format'**
+  String get nameIsInInvalidFormat;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email'**
+  String get invalidEmail;
+
+  /// No description provided for @emailCantBeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Email cannot be empty'**
+  String get emailCantBeEmpty;
+
+  /// No description provided for @emailIsInInvalidFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is in invalid format'**
+  String get emailIsInInvalidFormat;
+
+  /// No description provided for @invalidPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password'**
+  String get invalidPassword;
+
+  /// No description provided for @passwordCantBeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password cannot be empty'**
+  String get passwordCantBeEmpty;
+
+  /// No description provided for @passwordIsInInvalidFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is in invalid format'**
+  String get passwordIsInInvalidFormat;
+
+  /// No description provided for @invalidPasswordConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid password confirmation'**
+  String get invalidPasswordConfirmation;
+
+  /// No description provided for @passwordConfirmationCantBeEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Password confirmation cannot be empty'**
+  String get passwordConfirmationCantBeEmpty;
+
+  /// No description provided for @passwordsDoNotMatch.
   ///
   /// In en, this message translates to:
   /// **'Passwords do not match'**
-  String get passwordConfirmationMismatch;
+  String get passwordsDoNotMatch;
 }
 
 class _AppLocalizationsDelegate
